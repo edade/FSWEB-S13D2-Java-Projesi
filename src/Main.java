@@ -7,6 +7,9 @@ public class Main {
         System.out.println(isPerfectNumber(28));  // true
         System.out.println(isPerfectNumber(5));   // false
         System.out.println(isPerfectNumber(-1));  // false
+        System.out.println(numberToWords(123));    // "One Two Three"
+        System.out.println(numberToWords(1010));   // "One Zero One Zero"
+        System.out.println(numberToWords(-12));    // "Invalid Value"
     }
 
     public static boolean isPalindrome(int number) {
@@ -35,6 +38,30 @@ public class Main {
         }
 
         return sum == number;
+
+    }
+
+    public static String numberToWords(int number) {
+        if (number < 0) {
+            return "Invalid Value";
+        }
+
+        if (number == 0) {
+            return "Zero";
+        }
+
+        String[] units = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
+
+        StringBuilder words = new StringBuilder();
+        int num = number;
+
+        while (num > 0) {
+            int digit = num % 10;
+            words.insert(0, units[digit] + " ");
+            num /= 10;
+        }
+
+        return words.toString().trim();
 
     }
 }
