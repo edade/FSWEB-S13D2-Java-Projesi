@@ -3,6 +3,10 @@ public class Main {
         System.out.println(isPalindrome(-1221));  // true
         System.out.println(isPalindrome(707));    // true
         System.out.println(isPalindrome(11212));  // false
+        System.out.println(isPerfectNumber(6));   // true
+        System.out.println(isPerfectNumber(28));  // true
+        System.out.println(isPerfectNumber(5));   // false
+        System.out.println(isPerfectNumber(-1));  // false
     }
 
     public static boolean isPalindrome(int number) {
@@ -17,6 +21,20 @@ public class Main {
         }
 
         return true;
+
+    }
+    public static boolean isPerfectNumber(int number) {
+        if(number<0) {
+            return false;
+        }
+        int sum = 0;
+        for (int i = 1; i <= number/2; i++) {
+            if (number % i == 0) {
+                sum += i;
+            }
+        }
+
+        return sum == number;
 
     }
 }
